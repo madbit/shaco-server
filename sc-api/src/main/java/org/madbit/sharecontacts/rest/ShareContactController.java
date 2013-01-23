@@ -33,8 +33,11 @@ public class ShareContactController {
 			logger.debug(pnd.getValue());
 		}
 		
+		ShareContactResponse response = new ShareContactResponse();
+		response.setStatus("0");
+		response.setDescription("OK");
 			
-		return new ShareContactResponse();
+		return response;
 	}
 	
 	@RequestMapping(value = "/echo", method = RequestMethod.GET)   
