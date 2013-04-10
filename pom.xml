@@ -1,20 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.madbit.sharecontact</groupId>
+	<groupId>org.madbit.shaco</groupId>
 	<artifactId>sc-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Share Contact Service</name>
 
 	<modules>
-		<module>sc-api</module>
+		<module>sc-rest-api</module>
 		<module>sc-framework</module>
 		<module>sc-war</module>
 	</modules>
 
 	<properties>
-		<spring.version>3.1.3.RELEASE</spring.version>
+		<spring.version>3.2.2.RELEASE</spring.version>
 	</properties>
 
 	<dependencies>
@@ -56,11 +56,16 @@
 				<artifactId>javax.servlet-api</artifactId>
 				<version>3.0.1</version>
 			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
 	<organization>
-		<name>Madbit.org</name>
+		<name>madbit.org</name>
 		<url>http://www.madbit.org</url>
 	</organization>
 
@@ -71,7 +76,7 @@
 				<role>Software Developer</role>
 			</roles>
 			<email>alessio.fiore@ericsson.com</email>
-			<organization>Ericsson Telecomunicazioni</organization>
+			<organization>madbit.org</organization>
 		</developer>
 	</developers>
 </project>

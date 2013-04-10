@@ -25,6 +25,6 @@ http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 		class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"
 	  	p:marshaller-ref="jaxb2Marshaller" p:unmarshaller-ref="jaxb2Marshaller" />
  
-	<!-- package where is placed the REST Endpoint -->
+	<!-- Enable @Controller annotation in REST Endpoint -->
 	<context:component-scan base-package="org.madbit.sharecontacts.rest" />
   </beans>

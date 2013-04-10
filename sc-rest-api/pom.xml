@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.madbit.shaco</groupId>
+	<artifactId>sc-rest-api</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Share Contact API</name>
+
+	<parent>
+		<artifactId>sc-service</artifactId>
+		<groupId>org.madbit.shaco</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.madbit.shaco</groupId>
+			<artifactId>sc-framework</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	
+		<dependency> <!-- Used for REST -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- REST interfaces -->
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.8.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<schemaDirectory>${basedir}/src/main/resources/xsd</schemaDirectory>
+					<generateDirectory>${basedir}/target/generated/</generateDirectory>
+					<generatePackage>org.madbit.sharecontacts.rest</generatePackage>
+					<extension>true</extension>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
