@@ -11,17 +11,20 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@Table(name="PROVISIONING_REQUEST")
-public class ProvisioningRequest implements Serializable {
+@Table(name="REGISTRATION_REQUEST")
+public class RegistrationRequest implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="PROVISIONING_ID", unique=true, nullable=false)
-	private int provisioningID;
+	@Column(name="REGISTRATION_ID", unique=true, nullable=false)
+	private long registrationId;
 
 	@Column(name="MSISDN", nullable=false, length=15)
 	private String msisdn;
+	
+	@Column(name="USER_TOKEN", unique=true, nullable=false)
+	private long userToken;
 
 	@Column(name="REGISTRATION_CODE", nullable=false)
 	private int registrationCode;
@@ -30,15 +33,15 @@ public class ProvisioningRequest implements Serializable {
 	@Column(name="EXPIRATION", nullable=false)
 	private Date expiration;
 
-	public ProvisioningRequest() {
+	public RegistrationRequest() {
 	}
 
-	public int getProvisioningID() {
-		return provisioningID;
+	public long getRegistrationId() {
+		return registrationId;
 	}
 
-	public void setProvisioningID(int provisioningID) {
-		this.provisioningID = provisioningID;
+	public void setRegistrationId(long registrationId) {
+		this.registrationId = registrationId;
 	}
 
 	public String getMsisdn() {
@@ -63,5 +66,13 @@ public class ProvisioningRequest implements Serializable {
 
 	public void setExpiration(Date expiration) {
 		this.expiration = expiration;
+	}
+
+	public long getUserToken() {
+		return userToken;
+	}
+
+	public void setUserToken(long userToken) {
+		this.userToken = userToken;
 	}
 }

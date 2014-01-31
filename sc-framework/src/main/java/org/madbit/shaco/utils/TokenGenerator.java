@@ -23,4 +23,9 @@ public class TokenGenerator {
 																						  // (arbitrarily choosing the most significant bits)
 		return uuid.add(SHIFT_VALUE); //shifting uuid to turn it from an signed 64bits to unsigned 64bit value.
 	}
+	
+	public static int generateIntId() {
+				
+		return UUID.randomUUID().hashCode();
+	}
 }

@@ -11,27 +11,26 @@
     </appender>
 
     <!-- File appender for application logging --> 
-    <appender name="LOG" class="org.apache.log4j.DailyRollingFileAppender">
+   <!--  <appender name="LOG" class="org.apache.log4j.DailyRollingFileAppender">
         <param name="Threshold" value="DEBUG" />        
-        <param name="File" value="/logs/ShareContacts/asg.log" /> 
+        <param name="File" value="/sbWlsASG/LOGS/ASGlog/asg.log" /> 
         <param name="DatePattern" value="'.'yyyy-MM-dd" />
         <param name="append" value="true" />
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%-5p %d{ABSOLUTE} %c:%L - %m%n" />
         </layout>
-    </appender>
+    </appender> -->
 	
-    <category name="org.madbit.sharecontacts" additivity="false">
+    <category name="org.madbit.shaco" additivity="false">
         <priority value="DEBUG" />
         <!-- <appender-ref ref="LOG" /> -->
-        <appender-ref ref="CONSOLE" />
+		<appender-ref ref="CONSOLE" />
     </category>
 	
     <!-- Root category level setting -->
     <root>
         <priority value="ERROR" />
-        <!-- <appender-ref ref="LOG" /> -->
-        <appender-ref ref="CONSOLE" />
+		<appender-ref ref="CONSOLE" />
     </root>
 
 </log4j:configuration>

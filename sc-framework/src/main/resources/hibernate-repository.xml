@@ -7,7 +7,7 @@
 		<lookup-method name="getRegistrationRepository" bean="registrationRepository"/>	
 	</bean>
 	
-	<bean id="registrationRepository" class="org.madbit.shaco.database.hiberate.HibernateRegistrationRepository" scope="prototype">
+	<bean id="registrationRepository" class="org.madbit.shaco.database.hiberate.HibernateRegistrationRequestRepository" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 

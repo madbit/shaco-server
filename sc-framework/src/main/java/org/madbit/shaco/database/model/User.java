@@ -15,7 +15,7 @@ public class User implements Serializable {
 
 	@Id
 	@Column(name="USER_TOKEN", unique=true, nullable=false)
-	private String userToken;
+	private long userToken;
 
 	@Column(name="IS_ENABLED")
 	private byte isEnabled;
@@ -26,11 +26,11 @@ public class User implements Serializable {
 	public User() {
 	}
 
-	public String getUserToken() {
+	public long getUserToken() {
 		return this.userToken;
 	}
 
-	public void setUserToken(String userToken) {
+	public void setUserToken(long userToken) {
 		this.userToken = userToken;
 	}
 
