@@ -2,3 +2,5 @@
 /sc-api/target
 /sc-framework/target
 /sc-war/target
+/sc-rest-api/target
+/sc-war/target
