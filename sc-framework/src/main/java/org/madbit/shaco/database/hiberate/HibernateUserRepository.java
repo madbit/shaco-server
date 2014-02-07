@@ -2,9 +2,11 @@ package org.madbit.shaco.database.hiberate;
 
 import org.madbit.shaco.database.IUserRepository;
 import org.madbit.shaco.database.model.User;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Scope("prototype")
 public class HibernateUserRepository extends HibernateAbstractRepository<User> implements IUserRepository {
 
 	public void createUser(User user) {

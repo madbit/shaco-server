@@ -5,8 +5,10 @@ import java.util.Random;
 
 import org.apache.log4j.Logger;
 import org.madbit.shaco.database.IRegistrationRequestRepository;
+import org.madbit.shaco.database.IUserRepository;
 import org.madbit.shaco.database.RepositoryFactory;
 import org.madbit.shaco.database.model.RegistrationRequest;
+import org.madbit.shaco.database.model.User;
 import org.madbit.shaco.utils.TokenGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -21,7 +23,7 @@ public class UserRegistrationService {
 	@Autowired
 	private RepositoryFactory repositoryFactory;
 
-	public void createNewUser(String msisdn) {
+	public void registerUser(String msisdn) {
 		logger.info("Service called for MSISDN " + msisdn);
 		IRegistrationRequestRepository registrationRepository = repositoryFactory.getRegistrationRepository();
 		RegistrationRequest provisioning = new RegistrationRequest();
@@ -64,5 +66,16 @@ public class UserRegistrationService {
 			logger.debug("Corresponding registration request removed");
 			return true;
 		}
-	}	
+	}
+	
+	public long createUser(String msisdn) {
+		User user = new User();
+		user.setMsisdn(msisdn);
+		user.setIsEnabled((byte) 0);
+		
+		IUserRepository userRepository = repositoryFactory.getUserRepository();
+		userRepository.createUser(user);
+		
+		return user.getUserId();
+	}
 }

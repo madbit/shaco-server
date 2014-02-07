@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Scope("prototype")
 public class AddressBookService {
 	
-	public String handlePhoneNumbers(int uid, String numbers) {
+	public String synchContacts(int uid, String numbers) {
 		String[] splittedNumbers = numbers.split(";");
 		
 		// list of unique phone numbers

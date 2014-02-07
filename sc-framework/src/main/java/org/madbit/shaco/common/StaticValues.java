@@ -4,6 +4,6 @@ public class StaticValues {
 	public static final String RESPONSE_OK = "0";
 	
 	public static final String RESPONSE_REGISTRATION_OK = "0";
-	public static final String RESPONSE_REGISTRATION_KO = "-1";
+	public static final long RESPONSE_REGISTRATION_KO = -1;
 
 }

@@ -38,7 +38,7 @@ public class ShareContactController {
 
 		logger.debug(sender + " " + receiver + " " + contactToShare);
 
-		return StaticValues.RESPONSE_REGISTRATION_OK;
+		return StaticValues.RESPONSE_OK;
 	}
 
 	@RequestMapping(value = "/registerNewUser", method = RequestMethod.POST)
@@ -48,7 +48,7 @@ public class ShareContactController {
 		logger.debug("Received registration request for MSISDN " + msisdn);
 
 		UserRegistrationService userRegistrationService = serviceFactory.getUserRegistrationService();
-		userRegistrationService.createNewUser(msisdn);
+		userRegistrationService.registerUser(msisdn);
 		logger.debug("Registration request saved " + msisdn);
 
 		return StaticValues.RESPONSE_REGISTRATION_OK;
@@ -62,7 +62,7 @@ public class ShareContactController {
 
 	@RequestMapping(value = "/confirmRegistrationCode", method = RequestMethod.POST)
 	@ResponseBody
-	public String confirmRegistrationCode(@RequestParam int regCode, @RequestParam String msisdn) {
+	public long confirmRegistrationCode(@RequestParam int regCode, @RequestParam String msisdn) {
 
 		logger.debug("Received registration code " + regCode + " for confirmation");
 
@@ -70,20 +70,21 @@ public class ShareContactController {
 		boolean isConfirmed = userRegistrationService.confirmRegistrationCode(regCode, msisdn);
 
 		if(isConfirmed) {
-			return StaticValues.RESPONSE_REGISTRATION_OK;
+			long userId = userRegistrationService.createUser(msisdn);
+			return userId;
 		} else {
 			return StaticValues.RESPONSE_REGISTRATION_KO;
 		}
 	}
 	
-	@RequestMapping(value = "/numbers", method = RequestMethod.POST)
+	@RequestMapping(value = "/synchContacts", method = RequestMethod.POST)
 	@ResponseBody
-	public String postNumbers(@RequestParam int uid, @RequestParam String numbers) {
+	public String synchContacts(@RequestParam int uid, @RequestParam String numbers) {
 
 		logger.debug("Received phone numbers list from user " + uid);
 		
 		AddressBookService addressBookService = serviceFactory.getAddressBookService();
-		addressBookService.handlePhoneNumbers(uid, numbers);
+		addressBookService.synchContacts(uid, numbers);
 		
 		return StaticValues.RESPONSE_OK;
 	}
