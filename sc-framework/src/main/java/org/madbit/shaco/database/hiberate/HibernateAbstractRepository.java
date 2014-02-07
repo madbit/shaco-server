@@ -1,8 +1,10 @@
 package org.madbit.shaco.database.hiberate;
 
 import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-public abstract class HibernateAbstractRepository {
+public abstract class HibernateAbstractRepository<T> {
 	
 	protected SessionFactory sessionFactory;
 
@@ -12,5 +14,10 @@ public abstract class HibernateAbstractRepository {
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
+	}
+	
+	@Transactional(propagation=Propagation.REQUIRED)
+	public void save(T entity) {
+		sessionFactory.getCurrentSession().save(entity);
 	}
 }

@@ -9,13 +9,15 @@ import org.madbit.shaco.database.RepositoryFactory;
 import org.madbit.shaco.database.model.RegistrationRequest;
 import org.madbit.shaco.utils.TokenGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Service
+@Scope("prototype")
 public class UserRegistrationService {
 
 	Logger logger = Logger.getLogger(this.getClass());
-
+	
 	@Autowired
 	private RepositoryFactory repositoryFactory;
 
@@ -62,5 +64,5 @@ public class UserRegistrationService {
 			logger.debug("Corresponding registration request removed");
 			return true;
 		}
-	}
+	}	
 }

@@ -8,9 +8,11 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.madbit.shaco.database.IRegistrationRequestRepository;
 import org.madbit.shaco.database.model.RegistrationRequest;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-public class HibernateRegistrationRequestRepository extends HibernateAbstractRepository implements IRegistrationRequestRepository {
+@Repository
+public class HibernateRegistrationRequestRepository extends HibernateAbstractRepository<RegistrationRequest> implements IRegistrationRequestRepository {
 	
 	private Logger logger = Logger.getLogger(this.getClass());
 	
